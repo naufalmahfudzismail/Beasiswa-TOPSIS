@@ -60,7 +60,7 @@ class ConvertBobot
         $gradientTahun2 = $ipk[3] - $ipk[2];
         $gradientTahun3 = $ipk[5] - $ipk[4];
         $gradientTahun4 = $ipk[7] - $ipk[6];
-        $totalGradient = $gradientTahun1 + $gradientTahun2 + $gradientTahun3 + $gradientTahun4;
+        $totalGradient = ($gradientTahun1 + $gradientTahun2 + $gradientTahun3 + $gradientTahun4) / 4;
 
         if($gagal == false) return $totalGradient * 100;
         else return null;
@@ -107,7 +107,7 @@ class ConvertBobot
 
            $v = 1;
            foreach ($point as $key => $value) {
-               if($pengalaman>=$value['bawah'] and $pengalaman<=$value['atas']){
+               if($pengalaman >= $value['bawah'] and $pengalaman <= $value['atas']){
                    $v = $key;
                }
            }
@@ -154,7 +154,7 @@ class ConvertBobot
 
            $v = 1;
            foreach ($point as $key => $value) {
-               if($toefl_itp>=$value['bawah'] and $toefl_itp<=$value['atas']){
+               if($toefl_itp>=$value['bawah'] and $toefl_itp<= $value['atas']){
                    $v = $key;
                }
            }
