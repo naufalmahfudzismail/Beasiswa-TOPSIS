@@ -76,11 +76,29 @@ class SeleksiController extends Controller
                     'nilai_topsis' => $nilai_topsis[$key] * 100,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
+
                 ];
             }
 
             DB::table('result')->truncate();
             DB::table('result')->insert($adm);
+            $sorted = DB::table('result')->orderByDesc('nilai_topsis')->get();
+
+            foreach ($sorted as $key => $v) {
+
+                if ($key < 10) {
+                    $keterangan = 'LOLOS';
+                } else {
+                    $keterangan = "TIDAK LOLOS";
+                }
+
+                $id = $v->id_peserta;
+
+                DB::table('result')
+                    ->where('id_peserta', '=', $id)
+                    ->update(['keterangan' => $keterangan]);
+            }
+
             return redirect()->back()->with('alert', 'Peserta sudah di seleksi, lihat di halam dashboard untuk hasil nya !');
 
         } else {

@@ -35,9 +35,7 @@
                         <td>{{ $datas->institusi}}</td>
                         <td>{{ $datas->ni_mhs }}</td>
                         <td>{{ $datas->nilai_topsis }}</td>
-                        @if($key < 10) <td>LOLOS</td>
-                        @else <td>TIDAK LOLOS</td>
-                        @endif
+                        <td>{{ $datas->Keterangan }}</td>
                     </tr>
                 @endforeach
                 </tbody>
