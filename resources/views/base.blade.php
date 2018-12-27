@@ -79,10 +79,10 @@
             }
 
         .input-image{
+            align-self: center
             margin:0 auto;
             padding: 20px;
-            margin-top: 20px;
-            align-content: center;
+            margin: 20px;
             background-color: #fff;
             box-shadow: 0px 0px 20px #c1c1c1;
         }
@@ -94,7 +94,7 @@
 
       </style>
 </head>
-<body >
+<body>
 <nav class="navbar navbar-inverse" >
         <div class="container-fluid">
           <div class="navbar-header">
@@ -167,6 +167,23 @@
             overwriteInitial: false,
             maxFileSize: 3000,
             maxFilesNum: 10,
+            slugCallback: function (filename) {
+                return filename.replace('(', '_').replace(']', '_');
+            }
+        });
+
+        $("#file-3").fileinput({
+            theme: 'fa',
+            uploadUrl: "/image-view",
+            uploadExtraData: function() {
+                return {
+                    _token: $("input[name='_token']").val(),
+                };
+            },
+            allowedFileExtensions: ['jpg', 'png', 'pdf', 'jpeg', 'docx'],
+            overwriteInitial: false,
+            maxFileSize: 3000,
+            maxFilesNum: 4,
             slugCallback: function (filename) {
                 return filename.replace('(', '_').replace(']', '_');
             }
