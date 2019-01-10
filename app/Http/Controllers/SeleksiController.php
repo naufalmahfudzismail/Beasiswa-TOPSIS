@@ -35,6 +35,7 @@ class SeleksiController extends Controller
 
         $b = Bobot::where('bobot_id', '=', 1)->first();
 
+
         $kriteria = ['ipk', 'aktif', 'penghargaan', 'toefl_itp', 'toefl_ibt', 'ielts', 'toeic'];
 
         if (count($peserta) > 2) {
@@ -59,11 +60,15 @@ class SeleksiController extends Controller
                 ];
 
             }
+
+
             DB::table('nilai_alternatif')->truncate();
             DB::table('nilai_alternatif')->insert($alter);
 
-            $bobot = [$b->ipk, $b->keaktifan, $b->penghargaan,
-                $b->toefel_itp, $b->toefel_ibt, $b->toefel_ielts, $b->toefel_toeic];
+            $bobot = [$b->ipk, $b->keaktifan, $b->penghargaan, $b->toefl_itp, $b->toefl_ibt, $b->ielts, $b->toeic];
+
+
+
 
             $topsis = new Topsis($kriteria, $alt, $bobot);
 
@@ -99,11 +104,11 @@ class SeleksiController extends Controller
                     ->update(['keterangan' => $keterangan]);
             }
 
-            return redirect()->back()->with('alert', 'Peserta sudah di seleksi, lihat di halam dashboard untuk hasil nya !');
+            return redirect('dashboard')->with('alert', 'Peserta sudah di seleksi, lihat di halam dashboard untuk hasil nya !');
 
         } else {
 
-            return redirect()->back()->with('alert', 'Peserta tidak bisa kurang dari 2 peserta');
+            return redirect('seleksi')->with('alert', 'Peserta tidak bisa kurang dari 2 peserta');
         }
 
     }

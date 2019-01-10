@@ -20,15 +20,15 @@
                     <div class="panel-heading text-center"><h3>Biodata </h3> </div>
                     <br>
                     <div class="panel-body">
-                        <div class="form-group">
+                        <div class="form-group col-md-4">
                             <label for="name">Nama   :</label>
                             <input type="text" class="form-control" id="nama" name = "nama">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-4">
                             <label for="pins">Institusi :</label>
                             <input type="text" class="form-control" id="institusi" name= "institusi">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-4">
                             <label for="pins">Nomor Kartu tanda Mahasiswa</label>
                             <input type="text" class="form-control" id="ktm" name = "ktm">
                         </div>
@@ -83,10 +83,10 @@
                 <div class="panel-heading text-center"><h3>Keaktifan </h3></div>
                 <br>
                     <div class="panel-body">
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                             <label for="pins">Jumlah pengalaman  :</label>
                             <input class="form-control" type="number" id="pengalaman" name ="pengalaman">
-                            <div class="container-fluid text-center">
+                            <div class="text-center">
                                 <div class="row">
                                     <div class="col-lg-8 col-sm-12 col-11 input-image">
                                         <h2 class="text-center text-danger">Upload Setifikat pengalaman</h2><br>
@@ -100,10 +100,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                             <label for="pins">Jumlah Penghargaan :</label>
                             <input  class="form-control" type="number" id="penghargaan" name ="penghargaan" >
-                            <div class="container-fluid text-center">
+                            <div class="text-center">
                                 <div class="row">
                                     <div class="col-lg-8 col-sm-12 col-11 input-image">
                                         <h2 class="text-center text-danger">Upload Setifikat Penghargaan</h2><br>

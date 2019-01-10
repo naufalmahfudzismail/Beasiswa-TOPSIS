@@ -3,7 +3,7 @@
 class KuadratHasilAkar{
 
 	public $kriteria;
-	
+
 	public $alternatif;
 
 	public function __construct($kriteria, $alternatif){
@@ -29,7 +29,7 @@ class KuadratHasilAkar{
 
 		foreach($this->alternatif as $i=>$alt){
 			foreach ($this->kriteria as $idx=>$k) {
-				$data[$i][$idx] = pow($alt[$idx],2);
+				$data[$i][$idx] = pow($alt[$idx], 2);
 			}
 		}
 
@@ -38,23 +38,28 @@ class KuadratHasilAkar{
 
 	public function total($alt){
 		foreach ($this->kriteria as $i => $v) {
-			$data[$i] = 0;		
-		}
+			$data[$i] = 0;
+        }
+
+        // kebalik
 		foreach ($alt as $key => $value) {
 			foreach ($this->kriteria as $i => $v) {
-				$data[$i]+=$value[$i];
+				$data[$i] += $value[$i];
 			}
 		}
+
 
 		return $data;
 
 	}
 
 	public function akar($total){
+
 		foreach ($total as $i => $v) {
-			$data[$i] = sqrt($v);		
+			$data[$i] = sqrt($v);
 		}
 
+      
 		return $data;
 	}
 

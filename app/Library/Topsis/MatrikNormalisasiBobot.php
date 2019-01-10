@@ -13,11 +13,12 @@ class MatrikNormalisasiBobot{
 		$this->bobot = $bobot;
 		$this->matrikNormalisasi = $matrikNormalisasi;
 		$this->kriteria = $kriteria;
-	
+
 	}
 
 	public function make(){
-		
+
+        //error
 		foreach ($this->matrikNormalisasi as $key => $value) {
 			foreach ($this->kriteria as $i => $v) {
 				$data[$key][$i] = $value[$i]*$this->bobot[$i];

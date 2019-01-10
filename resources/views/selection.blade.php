@@ -62,11 +62,11 @@
                 @endforeach
                 </tbody>
             </table>
-            <a  class="btn btn-primary btn-lg btn-block" href="{{action('SeleksiController@prosesSeleksi')}}" role = "button">Lakukan Proses Seleksi</a>
+            
             <br>
             <br>
             </div>
-
+            <a  class="btn btn-primary btn-lg btn-block" href="{{action('SeleksiController@prosesSeleksi')}}" role = "button">Lakukan Proses Seleksi</a>
         </div>
         <!-- /.content -->
     </section>

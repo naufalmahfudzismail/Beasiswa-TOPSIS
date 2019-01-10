@@ -3,7 +3,7 @@
 class MatrikNormalisasi{
 
 	public $kriteria;
-	
+
 	public $alternatif;
 
 	public $akar;
@@ -22,6 +22,7 @@ class MatrikNormalisasi{
 			}
 		}
 
+       
 		return $data;
 	}
 
