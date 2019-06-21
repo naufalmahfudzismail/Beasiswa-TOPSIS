@@ -1,6 +1,12 @@
-@extends('base')
-@section('content')
+@extends('adminlte::page')
 
+@section('title', 'Registrasi Peserta')
+
+@section('content_header')
+    <h1>Registrasi Peserta</h1>
+@stop
+
+    @section('content')
 <section class="main-section">
     <div class="container">
             <h2>Pendaftaran Beasiswa S2 Fatamorgana </h2>

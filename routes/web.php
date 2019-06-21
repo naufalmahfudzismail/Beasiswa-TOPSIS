@@ -15,7 +15,13 @@ Route::get('/', function () {
     return view('register');
 });
 
-Route::get('/registrasi', 'PesertaController@index');
+Auth::routes();
+
+Route::get('/profil', 'profilController@index')->name('admin/profil');
+Route::resource('peserta','PesertaController');
+Route::get('/', 'DashboardController@index');
+
+Route::get('/registrasi', 'PesertaController@registrasi');
 Route::get('/seleksi', 'SeleksiController@index');
 Route::get('/dashboard', 'DashboardController@index');
 

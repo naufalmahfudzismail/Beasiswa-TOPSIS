@@ -1,5 +1,12 @@
-@extends('base')
-@section('content')
+@extends('adminlte::page')
+
+@section('title', 'Dashboard Peserta Beasiswa')
+
+@section('content_header')
+    <h1>Dashboard Peserta Beasiswa</h1>
+@stop
+
+    @section('content')
     <!-- Main Section -->
     <section class="main-section">
         <!-- Add Your Content Inside -->

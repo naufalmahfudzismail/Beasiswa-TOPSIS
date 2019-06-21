@@ -1,9 +1,7 @@
 <?php
-
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\Peserta;
-
 class PesertaController extends Controller
 {
     /**
@@ -13,7 +11,8 @@ class PesertaController extends Controller
      */
     public function index()
     {
-        return view('register');
+        $peserta = Peserta::all();
+        return view('selection', compact('peserta'));
     }
     /**
      * Show the form for creating a new resource.
@@ -22,20 +21,26 @@ class PesertaController extends Controller
      */
     public function create()
     {
-
     }
-
     public function storeImage(Request $request)
     {
-    	$imageName = request()->file->getClientOriginalName();
+        $imageName = request()->file->getClientOriginalName();
         request()->file->move(public_path('upload'), $imageName);
-    	return response()->json(['uploaded' => '/upload/'.$imageName]);
+        return response()->json(['uploaded' => '/upload/' . $imageName]);
     }
-
-    public function registrasi(Request $request){
-
+    public function registrasi()
+    {
+        return view('register');
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
         $this->validate($request, [
-
             'nama' => 'required',
             'institusi' => 'required',
             'ktm' => 'required',
@@ -54,45 +59,30 @@ class PesertaController extends Controller
             'ielts' => 'required',
             'toeic' => 'required'
         ]);
-
-        if($request->ip1 > 4 ||$request->ip2 > 4 || $request->ip3 > 4 || $request->ip4 > 4 || $request->ip5 > 4|| $request->ip6 > 4 || $request->ip7 > 4|| $request->ip8 > 4){
-
+        if ($request->ip1 > 4 || $request->ip2 > 4 || $request->ip3 > 4 || $request->ip4 > 4 || $request->ip5 > 4 || $request->ip6 > 4 || $request->ip7 > 4 || $request->ip8 > 4) {
             return redirect()->back()->with('alert', 'Nilai IP kamu tidak valid');
+        } else {
+            $data = new Peserta();
+            $data->nama = $request->nama;
+            $data->institusi = $request->institusi;
+            $data->ni_mhs = $request->ktm;
+            $data->ip_1 = $request->ip1;
+            $data->ip_2 = $request->ip2;
+            $data->ip_3 = $request->ip3;
+            $data->ip_4 = $request->ip4;
+            $data->ip_5 = $request->ip5;
+            $data->ip_6 = $request->ip6;
+            $data->ip_7 = $request->ip7;
+            $data->ip_8 = $request->ip8;
+            $data->keaktifan = $request->pengalaman;
+            $data->penghargaan = $request->penghargaan;
+            $data->toefel_itp = $request->toefl_itp;
+            $data->toefel_ibt = $request->toefl_ibt;
+            $data->ielts = $request->ielts;
+            $data->toeic = $request->toeic;
+            $data->save();
+            return redirect('seleksi')->with('alert-success', 'Data kamu berhasil disimpan, Liat data kamu');
         }
-
-        else{
-                $data = new Peserta();
-                $data->nama = $request->nama;
-                $data->institusi = $request->institusi;
-                $data->ni_mhs = $request->ktm;
-                $data->ip_1 = $request->ip1;
-                $data->ip_2 = $request->ip2;
-                $data->ip_3 = $request->ip3;
-                $data->ip_4 = $request->ip4;
-                $data->ip_5 = $request->ip5;
-                $data->ip_6 = $request->ip6;
-                $data->ip_7 = $request->ip7;
-                $data->ip_8 = $request->ip8;
-                $data->keaktifan = $request->pengalaman;
-                $data->penghargaan = $request->penghargaan;
-                $data->toefel_itp = $request->toefl_itp;
-                $data->toefel_ibt = $request->toefl_ibt;
-                $data->ielts = $request->ielts;
-                $data->toeic = $request->toeic;
-                $data->save();
-
-                return redirect('seleksi')->with('alert-success', 'Data kamu berhasil disimpan, Liat data kamu');
-        }
-    }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
     /**
      * Display the specified resource.
@@ -112,7 +102,8 @@ class PesertaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Peserta::where('id', $id)->get();
+        return view('edit', compact('data'));
     }
     /**
      * Update the specified resource in storage.
@@ -123,7 +114,26 @@ class PesertaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = Peserta::where('id', $id)->first();
+        $data->nama = $request->nama;
+        $data->institusi = $request->institusi;
+        $data->ni_mhs = $request->ktm;
+        $data->ip_1 = $request->ip1;
+        $data->ip_2 = $request->ip2;
+        $data->ip_3 = $request->ip3;
+        $data->ip_4 = $request->ip4;
+        $data->ip_5 = $request->ip5;
+        $data->ip_6 = $request->ip6;
+        $data->ip_7 = $request->ip7;
+        $data->ip_8 = $request->ip8;
+        $data->keaktifan = $request->pengalaman;
+        $data->penghargaan = $request->penghargaan;
+        $data->toefel_itp = $request->toefl_itp;
+        $data->toefel_ibt = $request->toefl_ibt;
+        $data->ielts = $request->ielts;
+        $data->toeic = $request->toeic;
+        $data->save();
+        return redirect('seleksi')->with('alert-success', 'Data berhasil diubah!');
     }
     /**
      * Remove the specified resource from storage.
@@ -133,6 +143,8 @@ class PesertaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Peserta::where('id', $id)->first();
+        $data->delete();
+        return redirect('seleksi')->with('alert-success', 'Data berhasi dihapus!');
     }
 }
