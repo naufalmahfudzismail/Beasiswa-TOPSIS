@@ -97,6 +97,7 @@
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" style="background:rgba(0,0,0,0.5);">
         <div class="container-fluid">
+
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
               <span class="icon-bar"></span>
@@ -133,7 +134,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/themes/fa/theme.js" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" type="text/javascript"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" type="text/javascript"></script>
-
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
  <script type="text/javascript">
         $("#file-1").fileinput({
             theme: 'fa',
